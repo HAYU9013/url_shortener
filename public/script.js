@@ -5,9 +5,9 @@ function shortenURL() {
     fetch("/shorten", {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/json"
         },
-        body: `url=${encodeURIComponent(urlInput)}`
+        body: JSON.stringify({ url: urlInput })
     })
     .then(response => response.json())
     .then(data => {

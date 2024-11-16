@@ -1,16 +1,18 @@
 package services
 
 import (
-	"crypto/rand"                // 引入隨機數生成包
-	"encoding/base64"            // 引入base64編碼包
+	"math/rand"                  // 引入math/rand包
 	"url_shortener/models"       // 引入自定義的models包
 	"url_shortener/repositories" // 引入自定義的repositories包
 )
 
 func GenerateShortCode() string {
-	b := make([]byte, 6)                        // 創建一個6字節的切片
-	rand.Read(b)                                // 生成隨機數並填充切片
-	return base64.URLEncoding.EncodeToString(b) // 將隨機數編碼為base64並返回
+	chars := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" // 定義短碼的字符集
+	var b string
+	for i := 0; i < 6; i++ {
+		b += string(chars[rand.Intn(len(chars))]) // 創建一個長度為6的字節數組
+	}
+	return b
 }
 
 func ShortenURL(originalURL string) (models.URL, error) {

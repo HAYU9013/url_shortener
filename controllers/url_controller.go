@@ -12,7 +12,14 @@ import (
 // 縮短URL的處理函數
 func ShortenURL(c *gin.Context) {
 	// 從請求中獲取原始URL
-	originalURL := c.PostForm("url")
+	var requestBody struct {
+		URL string `json:"url"`
+	}
+	if err := c.ShouldBindJSON(&requestBody); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		return
+	}
+	originalURL := requestBody.URL
 	// 打印原始URL
 	fmt.Println(originalURL)
 	// 調用服務來縮短URL
