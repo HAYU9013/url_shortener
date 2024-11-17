@@ -14,6 +14,7 @@ var DB *gorm.DB
 // 如果連接失敗，會記錄錯誤並終止程序
 
 func ConnectDatabase() {
+	// TODO: Change the password to your own MySQL password
 	dsn := "root:FILL_YOUR_PWD@tcp(127.0.0.1:3306)/url_shortener?charset=utf8mb4&parseTime=True&loc=Local"
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
