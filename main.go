@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	// 答案在這個 branch
 	// 初始化資料庫
 	config.ConnectDatabase()
 	// 初始化 Gin
