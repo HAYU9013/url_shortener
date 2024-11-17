@@ -15,10 +15,8 @@ func ShortenURL(c *gin.Context) {
 	var requestBody struct {
 		URL string `json:"url"`
 	}
-	if err := c.ShouldBindJSON(&requestBody); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
-		return
-	}
+	// TODO: Bind request body (json) to requestBody
+
 	originalURL := requestBody.URL
 	// 打印原始URL
 	fmt.Println(originalURL)
@@ -31,14 +29,15 @@ func ShortenURL(c *gin.Context) {
 	}
 	// 設定端口號
 	port := "8080"
-	// 返回縮短後的URL
-	c.JSON(http.StatusOK, gin.H{"short_url": "http://localhost:" + port + "/r/" + url.ShortCode})
+	// TODO: Send response with shortened URL
+
 }
 
 // 重定向URL的處理函數
 func RedirectURL(c *gin.Context) {
-	// 從請求中獲取短碼
-	shortCode := c.Param("code")
+
+	// TODO: Get short code from request URL route parameter
+
 	// 打印短碼
 	fmt.Println(shortCode)
 	// 從存儲庫中獲取原始URL
