@@ -1,17 +1,16 @@
 package services
 
 import (
-	"math/rand"                  // 引入math/rand包
+	//TODO: import math/rand package
 	"url_shortener/models"       // 引入自定義的models包
 	"url_shortener/repositories" // 引入自定義的repositories包
 )
 
 func GenerateShortCode() string {
-	chars := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" // 定義短碼的字符集
+	chars := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" // 定義短碼的字元集
 	var b string
-	for i := 0; i < 6; i++ {
-		b += string(chars[rand.Intn(len(chars))]) // 創建一個長度為6的字節數組
-	}
+	// TODO: Generate a 6-character short code save into b
+
 	return b
 }
 
